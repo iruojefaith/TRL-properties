@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg width="462" height="1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="m-870.872 753.374 931.72 577.156c11.063-172.14-29.886-349.27 31.424-518.825C157.593 634.259 322.34 502.836 404.25 330.477c56.418-119.405 69-252.993 48.23-370.923-20.959-119.344-75.457-224.443-143.12-314.349-58.651-76.541-132.69-160.021-111.577-267.571 8.421-45.37 33.243-87.066 56.676-128.324 35.244-61.182 70.112-125.19 77.885-191.715 5.046-43.57-4.356-87.005-26.511-117.595L-870.084 753.862l-.788-.488z"
+            fill="#c69963" />
+    </svg>
+    <!---->
+    <div ui-view="header">
+        <auth-header>
+            <header class="m-auth-header">
+                <div class="content"> <a class="logo" ng-click="$ctrl.handleLogoClick()"> <img imageonload=""
+                            ng-src="https://cdn.tenantcloud.com/builds/v37.1.10/web/images/shared/tc-logo/logo-9.svg"
+                            title="Header photo" alt="Header photo" class="s-image--loading_success"
+                            src="https://cdn.tenantcloud.com/builds/v37.1.10/web/images/shared/tc-logo/logo-9.svg">
+                    </a>
+                    <!---->
+                    <div class="actions" ng-if="$ctrl.isSignupState">
+                        <!---->
+                        <p ng-if="!$root.$mdMedia('xs-max')">Already have an account?</p>
+                        <!----> <a class="m-btn btn-default--warning" ng-click="$ctrl.handleLoginClick()"> Log
+                            in </a>
+                    </div>
+                    <!---->
+                    <!---->
+                </div>
+            </header>
+        </auth-header>
+    </div>
+    <!---->
+
+
+    <div ui-view="content" class="content">
+        <auth-content class="u-flex--flex u-fillHeight">
+            <div class="m-auth u-fill">
+                <div class="auth-content">
+                    <!---->
+                    <div class="m-auth-form" ui-view="form" data-test="auth-content">
+                        <signup>
+                            <auth-title label="Get started"
+                                description="Welcome to TenantCloud rental management software.">
+                                <div class="m-auth-title">
+                                    <h1 class="title">Get started</h1>
+                                    <h3 class="description">Welcome to TenantCloud rental management software.
+                                    </h3>
+                                </div>
+                            </auth-title>
+                            <div class="auth-start">
+                                <auth-socials is-signup="true" social-token="$ctrl.signup($event)"
+                                    label="auth.continue_with">
+                                    <div class="m-socials--auth">
+                                        <div class="socials-buttons">
+                                            <!---->
+                                            <auth-social-google-btn
+                                                ng-if="!$ctrl.isLoading &amp;&amp; !$ctrl.isServerSideGoogle"
+                                                class="auth-social-btn" label="auth.continue_with"
+                                                sign-in="$ctrl.handleSignInGoogle($event)"><a auth-social-google=""
+                                                    class="m-btn m-social-btn gplus" sign-in="$ctrl.handleSignIn($event)"
+                                                    data="app-social-login" data-test="social-google"> <img
+                                                        class="icon-google"
+                                                        ng-src="https://cdn.tenantcloud.com/builds/v37.1.10/web/images/shared/icons/google-icon.svg"
+                                                        alt="google"
+                                                        src="https://cdn.tenantcloud.com/builds/v37.1.10/web/images/shared/icons/google-icon.svg">
+                                                    <span ng-bind=":: $ctrl.label | trans: { name: 'Google' }">Continue
+                                                        with Google</span> </a> </auth-social-google-btn>
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <div class="auth-social-btn"
+                                                ng-if="!$ctrl.isLoading &amp;&amp; $ctrl.isAppleAuth &amp;&amp; $ctrl.isServiceSideAuthAllowed">
+                                                <a class="m-btn m-social-btn apple"
+                                                    ng-click="$ctrl.handleServerSideSignIn($ctrl.SocialProvider.apple)"
+                                                    data-test="social-apple"> <i class="ri-apple-fill"></i>
+                                                    Continue with Apple </a>
+                                            </div>
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <auth-social-facebook-btn
+                                                ng-if="!$ctrl.isLoading &amp;&amp; !$ctrl.isServerSideFacebook"
+                                                class="auth-social-btn" label="auth.continue_with"
+                                                sign-in="$ctrl.handleSignInFacebook($event)"><a auth-social-facebook=""
+                                                    class="m-btn m-social-btn facebook" sign-in="$ctrl.handleSignIn($event)"
+                                                    data="app-social-login" data-test="social-facebook"> <i
+                                                        class="ri-facebook-circle-fill"></i> Continue with
+                                                    Facebook </a> </auth-social-facebook-btn>
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                        </div>
+                                    </div>
+                                </auth-socials>
+                                <hr class="auth-hr">
+                                <div class="actions"> <a class="m-btn btn-primary auth-btn"
+                                        ng-click="$ctrl.goToSignupWithEmail()" data-test="signup-email"> Sign up
+                                        with Email </a> </div>
+                                <auth-terms>
+                                    <div class="auth-terms">
+                                        <p> By creating an account you are agreeing to our <a
+                                                ng-click="$ctrl.AppService.openPromoLink('/terms')" target="_blank"> Terms
+                                                of Use </a> and <a ng-click="$ctrl.AppService.openPromoLink('/privacy')"
+                                                target="_blank"> Privacy Policy </a> . </p>
+                                    </div>
+                                </auth-terms>
+                            </div>
+                        </signup>
+                    </div>
+                </div>
+            </div>
+        </auth-content>
+    </div>
+</body>
+</html>
